@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MVVMNewsApp</string>
+    <string name="text_search_formatted">Search...</string>
+    <string name="text_breaking_news">Breaking News</string>
+    <string name="text_saved_news">Saved News</string>
+    <string name="text_search_news">Search News</string>
+</resources>
