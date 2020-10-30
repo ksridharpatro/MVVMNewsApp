@@ -6,6 +6,7 @@ import android.view.View
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.androiddevs.mvvmnewsapp.R
 import com.androiddevs.mvvmnewsapp.adapters.NewsAdapter
@@ -15,7 +16,6 @@ import com.androiddevs.mvvmnewsapp.util.Constants.SEARCH_NEWS_TIME_DELAY
 import com.androiddevs.mvvmnewsapp.util.Resource
 import kotlinx.android.synthetic.main.fragment_search_news.*
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -33,7 +33,7 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
         var searchNewsJob: Job? = null
         etSearch.addTextChangedListener { editable ->
             searchNewsJob?.cancel()
-            searchNewsJob = MainScope().launch {
+            searchNewsJob = lifecycleScope.launch {
                 delay(SEARCH_NEWS_TIME_DELAY)
                 editable?.let {
                     if (editable.toString().isNotEmpty()) {
